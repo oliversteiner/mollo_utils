@@ -1,0 +1,9 @@
+mollo_modultemplate.main:
+  css:
+    theme:
+      assets/css/mollo_modultemplate.css: {}
+  js:
+    assets/js/mollo_modultemplate.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

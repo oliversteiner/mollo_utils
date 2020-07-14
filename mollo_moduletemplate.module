@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains mollo_modultemplate.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function mollo_modultemplate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the mollo_modultemplate module.
+    case 'help.page.mollo_modultemplate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Artist Module for Mollo Events') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mollo_modultemplate_theme() {
+  return [
+    'mollo_modultemplate' => [
+      'render element' => 'children',
+    ],
+  ];
+}

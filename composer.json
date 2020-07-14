@@ -1,0 +1,18 @@
+{
+  "name": "drupal/mollo_modultemplate",
+  "type": "drupal-module",
+  "license": "GPL-3.0+",
+  "description": "Template for Drupal Mollo Modules",
+  "keywords": [
+    "drupal",
+    "mollo",
+    "template"
+  ],
+  "homepage": "https://github.com/oliversteiner/mollo_modultemplate",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://github.com/oliversteiner/mollo_modultemplate/issues",
+    "source": "https://github.com/oliversteiner/mollo_modultemplate"
+  },
+  "require": {}
+}
