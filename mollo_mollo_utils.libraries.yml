@@ -1,0 +1,9 @@
+mollo_utils.main:
+  css:
+    theme:
+      assets/css/mollo_utils.css: {}
+  js:
+    assets/js/mollo_utils.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

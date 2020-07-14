@@ -1,6 +1,5 @@
 name: 'Mollo Template Module'
 type: module
-description: 'Template for Drupal Mollo Modules'
-core: 8.x
+description: 'Drupal Developer Utils Module'
 core_version_requirement: ^8 || ^9
 package: 'Mollo'

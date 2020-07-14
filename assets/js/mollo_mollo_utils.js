@@ -3,8 +3,8 @@
     attach(context, settings) {
       console.log("Mollo Artist");
 
-        $('#mollo-modultemplate', context)
-          .once('mollo-modultemplate')
+        $('#mollo-utils', context)
+          .once('mollo-utils')
           .each(() => {});
 
     },
