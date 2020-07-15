@@ -1,4 +1,4 @@
-name: 'Mollo Template Module'
+name: 'Utils '
 type: module
 description: 'Drupal Developer Utils Module'
 core_version_requirement: ^8 || ^9
