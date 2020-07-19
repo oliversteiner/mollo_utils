@@ -11,12 +11,31 @@ use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\Entity\Node;
-use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
 use Exception;
 use RuntimeException;
 
-class Helper
+interface iHelper
+{
+  public static function getTermsByID($vid);
+  public static function getTermNameByID($term_id);
+  public static function getFieldValue(
+    $node,
+    $field_name,
+    $term_list_name,
+    $force_array
+  );
+  public static function getToken($node_or_node_id);
+  public static function generateToken();
+  public static function getAudioFieldValue($node, $field_name);
+  public static function createImageStyle(
+    $img_id_or_file,
+    $image_style_id,
+    $dont_create
+  );
+}
+
+class Helper implements iHelper
 {
   /**
    * @param $vid
@@ -105,7 +124,7 @@ class Helper
   }
 
   /**
-   * @param NodeInterface | Node $node
+   * @param Node $node
    * @param string $field_name
    * @param null $term_list_name
    * @param bool | string $force_array
@@ -169,6 +188,10 @@ class Helper
     try {
       if ($node->get($field_name)) {
         $value = $node->get($field_name)->getValue();
+        $type = $node
+          ->get($field_name)
+          ->getFieldDefinition()
+          ->getType();
 
         // single Item
         if (count($value) === 1) {
@@ -185,6 +208,11 @@ class Helper
           // Duration Field
           if ($value && $value[0] && isset($value[0]['duration'])) {
             $result = $value[0]['duration'];
+          }
+
+          // Time Date
+          if ($type === 'datetime') {
+            $result = $node->get($field_name)->date->getTimestamp();
           }
 
           // Value is Taxonomy Term
@@ -302,7 +330,6 @@ class Helper
     $result = [];
 
     $field_name = 'field_' . $field_name;
-
 
     $url = ''; // url to audio file
     $file_name = '';
