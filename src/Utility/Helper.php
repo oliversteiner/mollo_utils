@@ -71,6 +71,24 @@ class Helper implements iHelper
   }
 
   /**
+   * @param $term_id
+   * @return string
+   */
+  public static function getTermIconByID($term_id): string
+  {
+
+    $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term_id);
+    $value = $term->get('field_mollo_icon')->getValue();
+    if($value){
+      $icon_name = $value[0]['icon_name'];
+      $style = $value[0]['style'];
+
+    return $style.' fa-'.$icon_name;
+    }
+    return '';
+  }
+
+  /**
    * @param $term_name
    * @param $vid
    * @param bool $create
