@@ -25,6 +25,8 @@ interface iHelper
     $term_list_name,
     $force_array
   );
+
+
   public static function getToken($node_or_node_id);
   public static function generateToken();
   public static function getAudioFieldValue($node, $field_name);
@@ -420,4 +422,6 @@ class Helper implements iHelper
     }
     return $image;
   }
+
+
 }
