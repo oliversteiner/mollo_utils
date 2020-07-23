@@ -1,18 +1,18 @@
 {
-  "name": "drupal/mollo_modultemplate",
+  "name": "drupal/mollo_utils",
   "type": "drupal-module",
   "license": "GPL-3.0+",
-  "description": "Template for Drupal Mollo Modules",
+  "description": "Drupal Developer Utils Module",
   "keywords": [
     "drupal",
     "mollo",
     "template"
   ],
-  "homepage": "https://github.com/oliversteiner/mollo_modultemplate",
+  "homepage": "https://github.com/oliversteiner/mollo_utils",
   "minimum-stability": "dev",
   "support": {
-    "issues": "https://github.com/oliversteiner/mollo_modultemplate/issues",
-    "source": "https://github.com/oliversteiner/mollo_modultemplate"
+    "issues": "https://github.com/oliversteiner/mollo_utils/issues",
+    "source": "https://github.com/oliversteiner/mollo_utils"
   },
   "require": {}
 }

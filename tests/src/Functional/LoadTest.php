@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\mollo_modultemplate\Functional;
+namespace Drupal\Tests\mollo_utils\Functional;
 
 use Drupal\Core\Url;
 use Drupal\Tests\BrowserTestBase;
@@ -8,7 +8,7 @@ use Drupal\Tests\BrowserTestBase;
 /**
  * Simple test to ensure that main page loads with module enabled.
  *
- * @group mollo_modultemplate
+ * @group mollo_utils
  */
 class LoadTest extends BrowserTestBase {
 
@@ -17,7 +17,7 @@ class LoadTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['mollo_modultemplate'];
+  public static $modules = ['mollo_utils'];
 
   /**
    * A user with permission to administer site configuration.
