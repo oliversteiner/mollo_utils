@@ -15,10 +15,12 @@ use Drupal\taxonomy\Entity\Term;
 use Exception;
 use RuntimeException;
 
-interface iHelper
-{
+interface iHelper {
+
   public static function getTermsByID($vid);
+
   public static function getTermNameByID($term_id);
+
   public static function getFieldValue(
     $node,
     $field_name,
@@ -26,10 +28,14 @@ interface iHelper
     $force_array
   );
 
+  public static function getBoolean($node, $field_name);
 
   public static function getToken($node_or_node_id);
+
   public static function generateToken();
+
   public static function getAudioFieldValue($node, $field_name);
+
   public static function createImageStyle(
     $img_id_or_file,
     $image_style_id,
@@ -37,16 +43,16 @@ interface iHelper
   );
 }
 
-class Helper implements iHelper
-{
+class Helper implements iHelper {
+
   /**
    * @param $vid
+   *
    * @return array
    * @throws InvalidPluginDefinitionException
    * @throws PluginNotFoundException
    */
-  public static function getTermsByID($vid): array
-  {
+  public static function getTermsByID($vid): array {
     $term_list = [];
     $terms = Drupal::entityTypeManager()
       ->getStorage('taxonomy_term')
@@ -59,10 +65,10 @@ class Helper implements iHelper
 
   /**
    * @param $term_id
+   *
    * @return mixed
    */
-  public static function getTermNameByID($term_id): string
-  {
+  public static function getTermNameByID($term_id): string {
     $term = Term::load($term_id);
     if (!empty($term)) {
       return $term->getName();
@@ -72,18 +78,19 @@ class Helper implements iHelper
 
   /**
    * @param $term_id
+   *
    * @return string
    */
-  public static function getTermIconByID($term_id): string
-  {
-
-    $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($term_id);
+  public static function getTermIconByID($term_id): string {
+    $term = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->load($term_id);
     $value = $term->get('field_mollo_icon')->getValue();
-    if($value){
+    if ($value) {
       $icon_name = $value[0]['icon_name'];
       $style = $value[0]['style'];
 
-    return $style.' fa-'.$icon_name;
+      return $style . ' fa-' . $icon_name;
     }
     return '';
   }
@@ -92,12 +99,12 @@ class Helper implements iHelper
    * @param $term_name
    * @param $vid
    * @param bool $create
+   *
    * @return int
    * @throws InvalidPluginDefinitionException
    * @throws PluginNotFoundException
    */
-  public static function getTermIDByName($term_name, $vid, $create = true): int
-  {
+  public static function getTermIDByName($term_name, $vid, $create = TRUE): int {
     $tid = 0;
 
     $terms = Drupal::entityTypeManager()
@@ -111,11 +118,11 @@ class Helper implements iHelper
     }
 
     // Create new Term
-    if ($tid === 0 && $create === true) {
+    if ($tid === 0 && $create === TRUE) {
       try {
         $new_term = Term::create([
           'name' => $term_name,
-          'vid' => $vid
+          'vid' => $vid,
         ])->save();
         $tid = $new_term;
       } catch (EntityStorageException $e) {
@@ -127,12 +134,12 @@ class Helper implements iHelper
 
   /**
    * @param $vid
+   *
    * @return array
    * @throws InvalidPluginDefinitionException
    * @throws PluginNotFoundException
    */
-  public static function getTermsByName($vid): array
-  {
+  public static function getTermsByName($vid): array {
     $term_list = [];
     $terms = Drupal::entityTypeManager()
       ->getStorage('taxonomy_term')
@@ -148,6 +155,7 @@ class Helper implements iHelper
    * @param string $field_name
    * @param null $term_list_name
    * @param bool | string $force_array
+   *
    * @return boolean | string | array
    * @throws InvalidPluginDefinitionException
    * @throws PluginNotFoundException
@@ -155,11 +163,11 @@ class Helper implements iHelper
   public static function getFieldValue(
     $node,
     $field_name,
-    $term_list_name = null,
-    $force_array = false
+    $term_list_name = NULL,
+    $force_array = FALSE
   ) {
     $default_fields = ['body'];
-    $result = false;
+    $result = FALSE;
     $term_list = [];
 
     if ($term_list_name && is_string($term_list_name)) {
@@ -170,11 +178,11 @@ class Helper implements iHelper
       if (!is_object($node)) {
         throw new RuntimeException(
           'The $node Parameter is not a valid drupal entity.' .
-            ' (Field: ' .
-            $field_name .
-            ' Node:' .
-            $node .
-            ')'
+          ' (Field: ' .
+          $field_name .
+          ' Node:' .
+          $node .
+          ')'
         );
       }
 
@@ -184,11 +192,11 @@ class Helper implements iHelper
 
       if (is_string($field_name)) {
         // check for 'body'
-        if (!in_array($field_name, $default_fields, false)) {
+        if (!in_array($field_name, $default_fields, FALSE)) {
           // check for 'field_field_NAME'
           $pos = strpos($field_name, 'field_');
 
-          if ($pos === false) {
+          if ($pos === FALSE) {
             $field_name = 'field_' . $field_name;
           }
         }
@@ -196,17 +204,17 @@ class Helper implements iHelper
     } catch (Exception $e) {
       throw new RuntimeException(
         '$field_name must be a string.' .
-          ' (Field: ' .
-          $field_name .
-          ' Node:' .
-          $node .
-          ') ' .
-          $e
+        ' (Field: ' .
+        $field_name .
+        ' Node:' .
+        $node .
+        ') ' .
+        $e
       );
     }
 
     try {
-      if ($node->get($field_name)) {
+      if ($node->hasField($field_name) && $node->get($field_name)) {
         $value = $node->get($field_name)->getValue();
         $type = $node
           ->get($field_name)
@@ -239,13 +247,14 @@ class Helper implements iHelper
           if ($term_list) {
             if ($term_list && $term_list[$result]) {
               $result = $term_list[$result];
-            } else {
+            }
+            else {
               $message = "No Term found with id {$result} in Taxonomy {$term_list}";
               Drupal::logger('mollo_utils')->notice($message);
             }
           }
 
-          if ($force_array === true) {
+          if ($force_array === TRUE) {
             $arr[] = $result;
             $result = $arr;
           }
@@ -277,15 +286,18 @@ class Helper implements iHelper
                   $term['id'] = (int) $item['target_id'];
                   $term['name'] = $term_list[$item['target_id']];
                   $result[$i] = $term;
-                } else {
+                }
+                else {
                   $result[$i] = $term_list[$item['target_id']];
                 }
-              } else {
-                $result[$i] = false;
+              }
+              else {
+                $result[$i] = FALSE;
                 $message = "No Term found with id {$result} in Taxonomy {$term_list_name}";
                 Drupal::logger('mollo_utils')->notice($message);
               }
-            } elseif (isset($item['target_id'])) {
+            }
+            elseif (isset($item['target_id'])) {
               $result[$i] = $item['target_id'];
             }
             $i++;
@@ -307,16 +319,68 @@ class Helper implements iHelper
   }
 
   /**
+   * @param Node $node
+   * @param string $field_name
+   *
+   * @return boolean | string | array
+   */
+  public static function getBoolean($node, $field_name) {
+    $result = FALSE;
+
+    try {
+      if (!is_object($node)) {
+        throw new RuntimeException(
+          'The $node Parameter is not a valid drupal entity.' .
+          ' (Field: ' .
+          $field_name .
+          ' Node:' .
+          $node .
+          ')'
+        );
+      }
+
+      if (!is_string($field_name)) {
+        throw new RuntimeException('field_name must be a string');
+      }
+    } catch (Exception $e) {
+      throw new RuntimeException(
+        '$field_name must be a string.' .
+        ' (Field: ' .
+        $field_name .
+        ' Node:' .
+        $node->getType() .
+        ') ' .
+        $e
+      );
+    }
+
+    try {
+      if ($node->hasField($field_name) && $node->get($field_name)->value) {
+        $value = $node->get($field_name)->getValue();
+
+        $result = $value ? TRUE : FALSE;
+      }
+    } catch (Exception $e) {
+      throw new RuntimeException(
+        'field_name (' . $field_name . ') not found \r' . $e
+      );
+    }
+
+    return $result;
+  }
+
+  /**
    * @param $node_or_node_id
+   *
    * @return bool
    */
-  public static function getToken($node_or_node_id)
-  {
+  public static function getToken($node_or_node_id) {
     $field_name = 'field_mollo_token';
 
     if (is_numeric($node_or_node_id)) {
       $entity = Node::load($node_or_node_id);
-    } else {
+    }
+    else {
       $entity = $node_or_node_id;
     }
 
@@ -328,25 +392,24 @@ class Helper implements iHelper
         return $value[0]['value'];
       }
     }
-    return false;
+    return FALSE;
   }
 
   /**
    * @return string
    * @throws Exception
    */
-  public static function generateToken(): string
-  {
+  public static function generateToken(): string {
     return random_bytes(20);
   }
 
   /**
    * @param NodeInterface | Node $node
    * @param string $field_name
+   *
    * @return boolean | string | array
    */
-  public static function getAudioFieldValue($node, $field_name)
-  {
+  public static function getAudioFieldValue($node, $field_name) {
     $result = [];
 
     $field_name = 'field_' . $field_name;
@@ -384,7 +447,7 @@ class Helper implements iHelper
           'media_link' => $url,
           'mime_type' => $mime_type,
           'name' => $name,
-          'file_name' => $file_name
+          'file_name' => $file_name,
         ];
       }
     }
@@ -396,19 +459,21 @@ class Helper implements iHelper
    * @param $img_id_or_file
    * @param $image_style_id
    * @param bool $dont_create
+   *
    * @return array|Image
    */
   public static function createImageStyle(
     $img_id_or_file,
     $image_style_id,
-    $dont_create = false
+    $dont_create = FALSE
   ) {
     $image = [];
     $image_style = ImageStyle::load($image_style_id);
 
     if ($img_id_or_file && $img_id_or_file instanceof FileInterface) {
       $file = $img_id_or_file;
-    } else {
+    }
+    else {
       $file = File::load($img_id_or_file);
     }
 
@@ -440,6 +505,5 @@ class Helper implements iHelper
     }
     return $image;
   }
-
 
 }
