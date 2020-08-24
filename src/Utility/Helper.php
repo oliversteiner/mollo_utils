@@ -570,4 +570,38 @@ class Helper implements iHelper
     }
     return $field_name;
   }
+
+  /**
+   * @param $nid
+   * @return bool
+   * @throws EntityStorageException
+   * @throws InvalidPluginDefinitionException
+   * @throws PluginNotFoundException
+   */
+  public static function publishToggle($nid) {
+
+
+    $storage = \Drupal::entityTypeManager()->getStorage('node');
+    $entity = $storage->load($nid);
+
+    if(!isset($entity)){
+      return false;
+    }
+
+    // Reverse the published status.
+    if ($entity->isPublished()) {
+      $entity->setUnpublished();
+      $status = FALSE;
+    }
+    else {
+      $entity->setPublished();
+      $status = TRUE;
+
+    }
+
+    $entity->save();
+
+
+    return $status;
+  }
 }
