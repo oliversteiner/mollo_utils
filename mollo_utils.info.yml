@@ -1,5 +1,7 @@
 name: 'Utils '
 type: module
-description: 'Drupal Developer Utils Module'
+description: 'Drupal Developer Utils for Mollo Modules'
 core_version_requirement: ^8 || ^9
 package: 'Mollo'
+project: mollo_utils
+version: 9.x-1.0
