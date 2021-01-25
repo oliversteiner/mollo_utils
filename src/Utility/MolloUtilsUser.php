@@ -4,6 +4,8 @@
 namespace Drupal\mollo_utils\Utility;
 
 
+use Drupal\user\Entity\User;
+
 class MolloUtilsUser {
 
   /**
@@ -17,18 +19,18 @@ class MolloUtilsUser {
       $user_name = ucfirst($user_name);
 
       /* Text */
-      $greeting = "Guten Tag";
+      $greeting = t("Good Day");
       $numeric_date = date("G");
       if ($numeric_date >= 0 && $numeric_date <= 11) {
-        $greeting = "Guten Morgen";
+        $greeting = t("Good Morning");
       }
       else {
         if ($numeric_date >= 12 && $numeric_date <= 17) {
-          $greeting = "Guten Tag";
+          $greeting = t("Good Day");
         }
         else {
           if ($numeric_date >= 18 && $numeric_date <= 23) {
-            $greeting = "Guten Abend";
+            $greeting = t("Good Evening");
           }
         }
       }
