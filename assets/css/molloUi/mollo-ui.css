@@ -1,0 +1,624 @@
+/*
+ *  --------- Comment ---------
+ */
+/*
+*     THEME
+*     =================
+*     bright
+*
+*/
+.mollo a.mollo-button,
+.mollo .mollo-button {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #292929;
+  border-color: #cccccc;
+  background-color: #e7e7e7;
+}
+.mollo a.mollo-button-success, .mollo a.mollo-button-ok,
+.mollo .mollo-button-success,
+.mollo .mollo-button-ok {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #0f7f34;
+  border-color: #2eb741;
+  background-color: #daffd4;
+}
+.mollo a.mollo-button-warning,
+.mollo .mollo-button-warning {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #7f5930;
+  border-color: #ffd29b;
+  background-color: #fff8cf;
+}
+.mollo a.mollo-button-error, .mollo a.mollo-button-danger,
+.mollo .mollo-button-error,
+.mollo .mollo-button-danger {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #a2132b;
+  border-color: #ffb4aa;
+  background-color: #ffe6e5;
+}
+
+a.mollo-button:hover,
+.mollo-button:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #323232;
+  border-color: #939393;
+  background-color: #c7c7c7;
+}
+a.mollo-button-success:hover, a.mollo-button-ok:hover,
+.mollo-button-success:hover,
+.mollo-button-ok:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #76c875;
+  border-color: #2eb741;
+  color: #daffd4;
+}
+a.mollo-button-warning:hover,
+.mollo-button-warning:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #e9cea5;
+  border-color: #ffd29b;
+  color: #fff8cf;
+}
+a.mollo-button-error:hover, a.mollo-button-danger:hover,
+.mollo-button-error:hover,
+.mollo-button-danger:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #bf9f9d;
+  border-color: #ffb4aa;
+  color: #ffe6e5;
+}
+
+a.mollo-button:active,
+.mollo-button:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #cccccc;
+  border-color: rgba(11, 11, 11, 0.95);
+  background-color: #4f4f4f;
+}
+a.mollo-button-success:active, a.mollo-button-ok:active,
+.mollo-button-success:active,
+.mollo-button-ok:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #76c875;
+  border-color: #2eb741;
+  color: #daffd4;
+}
+a.mollo-button-warning:active,
+.mollo-button-warning:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #e9cea5;
+  border-color: #ffd29b;
+  color: #fff8cf;
+}
+a.mollo-button-error:active, a.mollo-button-danger:active,
+.mollo-button-error:active,
+.mollo-button-danger:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #bf9f9d;
+  border-color: #ffb4aa;
+  color: #ffe6e5;
+}
+
+a.mollo-button,
+.mollo-button {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+}
+a.mollo-button.active,
+.mollo-button.active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #cccccc;
+  border-color: rgba(11, 11, 11, 0.95);
+  background-color: #4f4f4f;
+}
+a.mollo-button-success.active, a.mollo-button-ok.active,
+.mollo-button-success.active,
+.mollo-button-ok.active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #0f7f34;
+  border-color: #2eb741;
+  color: #daffd4;
+}
+a.mollo-button-warning.active,
+.mollo-button-warning.active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #7f5930;
+  border-color: #ffd29b;
+  color: #fff8cf;
+}
+a.mollo-button-error.active, a.mollo-button-danger.active,
+.mollo-button-error.active,
+.mollo-button-danger.active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #a2132b;
+  border-color: #ffb4aa;
+  color: #ffe6e5;
+}
+
+a.mollo-button,
+.mollo-button {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+}
+a.mollo-button.active:hover,
+.mollo-button.active:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #cccccc;
+  border-color: #333333;
+  background-color: #232323;
+}
+a.mollo-button-success.active:hover, a.mollo-button-ok.active:hover,
+.mollo-button-success.active:hover,
+.mollo-button-ok.active:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #0f7f34;
+  border-color: #2eb741;
+  color: #daffd4;
+}
+a.mollo-button-warning.active:hover,
+.mollo-button-warning.active:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #7f5930;
+  border-color: #ffd29b;
+  color: #fff8cf;
+}
+a.mollo-button-error.active:hover, a.mollo-button-danger.active:hover,
+.mollo-button-error.active:hover,
+.mollo-button-danger.active:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #a2132b;
+  border-color: #ffb4aa;
+  color: #ffe6e5;
+}
+
+.mollo-button i,
+.mollo-button svg {
+  margin-right: 4px;
+}
+
+.mollo-button.mollo-button-small {
+  margin: 2px 5px;
+  padding: 2px 5px;
+  font-size: 0.8em;
+  border-radius: 2px;
+}
+
+.mollo a.mollo-button-icon,
+.mollo .mollo-button-icon {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #292929;
+  border-color: transparent;
+  background-color: transparent;
+  opacity: 0.8;
+}
+.mollo a.mollo-button-icon i, .mollo a.mollo-button-icon svg,
+.mollo .mollo-button-icon i,
+.mollo .mollo-button-icon svg {
+  margin: 0;
+  padding: 0;
+}
+.mollo a.mollo-button-icon-info,
+.mollo .mollo-button-icon-info {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #8f8f8f;
+  border-color: transparent;
+  background-color: transparent;
+}
+.mollo a.mollo-button-icon-success, .mollo a.mollo-button-icon-ok,
+.mollo .mollo-button-icon-success,
+.mollo .mollo-button-icon-ok {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #0f7f34;
+  border-color: transparent;
+  background-color: transparent;
+}
+.mollo a.mollo-button-icon-warning,
+.mollo .mollo-button-icon-warning {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #7f5930;
+  border-color: transparent;
+  background-color: transparent;
+}
+.mollo a.mollo-button-icon-error, .mollo a.mollo-button-icon-danger,
+.mollo .mollo-button-icon-error,
+.mollo .mollo-button-icon-danger {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #a2132b;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+a.mollo-button-icon:hover,
+.mollo-button-icon:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #323232;
+  border-color: transparent;
+  background-color: transparent;
+  opacity: 1;
+}
+a.mollo-button-icon-info:hover,
+.mollo-button-icon-info:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #292929;
+  border-color: transparent;
+  background-color: transparent;
+  opacity: 1;
+}
+a.mollo-button-icon-success:hover, a.mollo-button-icon-ok:hover,
+.mollo-button-icon-success:hover,
+.mollo-button-icon-ok:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #daffd4;
+  opacity: 1;
+}
+a.mollo-button-icon-warning:hover,
+.mollo-button-icon-warning:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #fff8cf;
+  opacity: 1;
+}
+a.mollo-button-icon-error:hover, a.mollo-button-icon-danger:hover,
+.mollo-button-icon-error:hover,
+.mollo-button-icon-danger:hover {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #ffe6e5;
+  opacity: 1;
+}
+
+a.mollo-button-icon:active,
+.mollo-button-icon:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #4a4442;
+  border-color: transparent;
+  background-color: #979797;
+}
+a.mollo-button-icon-info:active,
+.mollo-button-icon-info:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #4a4442;
+  border-color: transparent;
+  background-color: #979797;
+}
+a.mollo-button-icon-success:active, a.mollo-button-icon-ok:active,
+.mollo-button-icon-success:active,
+.mollo-button-icon-ok:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #daffd4;
+}
+a.mollo-button-icon-warning:active,
+.mollo-button-icon-warning:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #fff8cf;
+}
+a.mollo-button-icon-error:active, a.mollo-button-icon-danger:active,
+.mollo-button-icon-error:active,
+.mollo-button-icon-danger:active {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #ffe6e5;
+}
+
+.mollo-fieldset {
+  display: inline-block;
+  padding: 1px;
+  margin: 1px;
+  border-radius: 2px;
+  border: 1px solid;
+  background: #f7fafd;
+}
+
+.mollo-fieldset.no-border {
+  border: 1px solid transparent;
+}
+
+.mollo-button.disabled {
+  cursor: no-drop;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.mollo-button-group .mollo-button {
+  box-sizing: border-box;
+  margin-right: -4px;
+  border-radius: 0;
+}
+
+.mollo-button-group .mollo-button:first-child:hover,
+.mollo-button-group .mollo-button:first-child:active,
+.mollo-button-group .mollo-button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.mollo-button-group .mollo-button:last-child:hover,
+.mollo-button-group .mollo-button:last-child:active,
+.mollo-button-group .mollo-button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.private .mollo-button {
+  background-color: #6a7fc4;
+}
+.private .mollo-button:hover {
+  background-color: #323188;
+}
+.private .mollo-button:active {
+  background-color: #1d4281;
+}
+
+.mollo-button > *,
+a.mollo-button > *,
+.mollo-button-icon > *,
+.mollo-button-icon-info > * {
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=mollo-ui.css.map */
