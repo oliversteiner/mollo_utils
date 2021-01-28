@@ -31,5 +31,8 @@ function mollo_utils_theme() {
     'mollo_utils' => [
       'render element' => 'children',
     ],
+    'mollo_clear_cache' => [
+      'render element' => 'children',
+    ],
   ];
 }

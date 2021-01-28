@@ -1,9 +1,19 @@
-mollo_utils.main:
+main:
   css:
     theme:
-      assets/css/mollo_utils.css: {}
+      assets/css/mollo-utils.css: {}
   js:
     assets/js/mollo_utils.js: {}
+
+
+# Clear Cache Block
+clear_cache:
+  css:
+    theme:
+      assets/css/molloUi/mollo-ui.css: {}
+      assets/css/mollo-clear-cache.css: { }
+  js:
+    assets/js/mollo_clear_cache.js: { }
   dependencies:
     - core/jquery
     - core/jquery.once

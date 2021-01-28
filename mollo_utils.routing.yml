@@ -1,0 +1,7 @@
+mollo_utils.clear_cache:
+  path: '/mollo/clear_cache'
+  defaults:
+    _controller: '\Drupal\mollo_utils\Controller\MolloUtilsController::clearCache'
+    _title: 'Clear Cache'
+  requirements:
+    _permission: 'administer content'

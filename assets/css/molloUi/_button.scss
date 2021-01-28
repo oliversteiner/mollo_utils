@@ -1,0 +1,414 @@
+// dont use import color -> it breaks themes
+
+@mixin mollo-button {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  padding: 2px 10px;
+  text-decoration: none;
+  border: 1px solid $color-default-border;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+// default
+.mollo a.mollo-button,
+.mollo .mollo-button {
+  @include mollo-button;
+  color: $color-default-text;
+  border-color: $color-default-border;
+  background-color: $color-default-background;
+
+  &-success,
+  &-ok {
+    @include mollo-button;
+    color: $color-ok-text;
+    border-color: $color-ok-border;
+    background-color: $color-ok-background;
+  }
+
+  &-warning {
+    @include mollo-button;
+    color: $color-warning-text;
+    border-color: $color-warning-border;
+    background-color: $color-warning-background;
+  }
+
+  &-error,
+  &-danger {
+    @include mollo-button;
+    color: $color-error-text;
+    border-color: $color-error-border;
+    background-color: $color-error-background;
+  }
+
+}
+
+// :hover
+a.mollo-button,
+.mollo-button {
+
+  &:hover {
+    @include mollo-button;
+    color: $color-default-text-hover;
+    border-color: $color-default-border-hover;
+    background-color: $color-default-background-hover;
+  }
+
+  &-success:hover,
+  &-ok:hover {
+    @include mollo-button;
+    background-color: $color-ok-hover;
+    border-color: $color-ok-border;
+    color: $color-ok-background;
+  }
+
+  &-warning:hover {
+    @include mollo-button;
+    background-color: $color-warning-hover;
+    border-color: $color-warning-border;
+    color: $color-warning-background;
+  }
+
+  &-error:hover,
+  &-danger:hover {
+    @include mollo-button;
+    background-color: $color-error-hover;
+    border-color: $color-error-border;
+    color: $color-error-background;
+  }
+
+}
+
+// :active
+a.mollo-button,
+.mollo-button {
+
+  &:active {
+    @include mollo-button;
+    color: $color-default-text-invert;
+    border-color: $color-default-border-invert;
+    background-color: $color-default-background-invert;
+  }
+
+  &-success:active,
+  &-ok:active {
+    @include mollo-button;
+    background-color: $color-ok-hover;
+    border-color: $color-ok-border;
+    color: $color-ok-background;
+  }
+
+  &-warning:active {
+    @include mollo-button;
+    background-color: $color-warning-hover;
+    border-color: $color-warning-border;
+    color: $color-warning-background;
+  }
+
+  &-error:active,
+  &-danger:active {
+    @include mollo-button;
+    background-color: $color-error-hover;
+    border-color: $color-error-border;
+    color: $color-error-background;
+  }
+
+}
+
+// .active
+a.mollo-button,
+.mollo-button {
+  @include mollo-button;
+
+  &.active {
+    @include mollo-button;
+    color: $color-default-text-invert;
+    border-color: $color-default-border-invert;
+    background-color: $color-default-background-invert;
+  }
+
+  &-success.active,
+  &-ok.active {
+    @include mollo-button;
+    background-color: $color-ok-text;
+    border-color: $color-ok-border;
+    color: $color-ok-background;
+  }
+
+  &-warning.active {
+    @include mollo-button;
+    background-color: $color-warning-text;
+    border-color: $color-warning-border;
+    color: $color-warning-background;
+  }
+
+  &-error.active,
+  &-danger.active {
+    @include mollo-button;
+    background-color: $color-error-text;
+    border-color: $color-error-border;
+    color: $color-error-background;
+  }
+
+}
+
+// .active:over
+a.mollo-button,
+.mollo-button {
+  @include mollo-button;
+
+  &.active:hover {
+    @include mollo-button;
+    color: $color-default-text-invert-hover;
+    border-color: $color-default-border-invert-hover;
+    background-color: $color-default-background-invert-hover;
+  }
+
+  &-success.active:hover,
+  &-ok.active:hover {
+    @include mollo-button;
+    background-color: $color-ok-text;
+    border-color: $color-ok-border;
+    color: $color-ok-background;
+  }
+
+  &-warning.active:hover {
+    @include mollo-button;
+    background-color: $color-warning-text;
+    border-color: $color-warning-border;
+    color: $color-warning-background;
+  }
+
+  &-error.active:hover,
+  &-danger.active:hover {
+    @include mollo-button;
+    background-color: $color-error-text;
+    border-color: $color-error-border;
+    color: $color-error-background;
+  }
+
+}
+
+// fontawesome Icons
+.mollo-button i,
+.mollo-button svg {
+  margin-right: 4px;
+}
+
+
+
+
+.mollo-button.mollo-button-small {
+  margin: 2px 5px;
+  padding: 2px 5px;
+  font-size: 0.8em;
+  border-radius: 2px;
+}
+
+
+// Button only icon
+
+
+
+// default
+.mollo a.mollo-button-icon,
+.mollo .mollo-button-icon {
+  @include mollo-button;
+  color: $color-default-text;
+  border-color: transparent;
+  background-color: transparent;
+  opacity: 0.8;
+
+  i, svg {
+    margin: 0;
+    padding: 0;
+  }
+
+  &-info {
+    @include mollo-button;
+    color: $color-admin-info;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  &-success,
+  &-ok {
+    @include mollo-button;
+    color: $color-ok-text;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  &-warning {
+    @include mollo-button;
+    color: $color-warning-text;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  &-error,
+  &-danger {
+    @include mollo-button;
+    color: $color-error-text;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+}
+
+// :hover
+a.mollo-button-icon,
+.mollo-button-icon {
+
+  &:hover {
+    @include mollo-button;
+    color: $color-default-text-hover;
+    border-color: transparent;
+    background-color: transparent;
+    opacity: 1;
+  }
+  &-info:hover {
+    @include mollo-button;
+    color: $color-admin-text;
+    border-color: transparent;
+    background-color: transparent;
+    opacity: 1;
+
+  }
+
+  &-success:hover,
+  &-ok:hover {
+    @include mollo-button;
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-ok-background;
+    opacity: 1;
+
+  }
+
+  &-warning:hover {
+    @include mollo-button;
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-warning-background;
+    opacity: 1;
+
+  }
+
+  &-error:hover,
+  &-danger:hover {
+    @include mollo-button;
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-error-background;
+    opacity: 1;
+
+  }
+
+}
+
+// :active
+a.mollo-button-icon,
+.mollo-button-icon {
+
+  &:active {
+    @include mollo-button;
+    color: $color-admin-text-active;
+    border-color: transparent;
+    background-color: $color-admin-background-active;
+  }
+
+  &-info:active {
+    @include mollo-button;
+    color: $color-admin-text-active;
+    border-color: transparent;
+    background-color: $color-admin-background-active;
+  }
+  &-success:active,
+  &-ok:active {
+    @include mollo-button;
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-ok-background;
+  }
+
+  &-warning:active {
+    @include mollo-button;
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-warning-background;
+  }
+
+  &-error:active,
+  &-danger:active {
+    @include mollo-button;
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-error-background;
+  }
+
+}
+
+
+
+// Fieldset
+.mollo-fieldset {
+  display: inline-block;
+  padding: 1px;
+  margin: 1px;
+  border-radius: 2px;
+  border: 1px solid;
+  background: $color-fieldset-background;
+}
+
+.mollo-fieldset.no-border {
+  border: 1px solid transparent;
+}
+
+.mollo-button.disabled {
+  cursor: no-drop;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.mollo-button-group .mollo-button {
+  box-sizing: border-box;
+  margin-right: -4px;
+  border-radius: 0;
+}
+
+.mollo-button-group .mollo-button:first-child:hover,
+.mollo-button-group .mollo-button:first-child:active,
+.mollo-button-group .mollo-button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.mollo-button-group .mollo-button:last-child:hover,
+.mollo-button-group .mollo-button:last-child:active,
+.mollo-button-group .mollo-button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.private {
+
+  .mollo-button {
+    background-color: $color-admin-private;
+  }
+
+  .mollo-button:hover {
+    background-color: $color-admin-private-hover;
+  }
+
+  .mollo-button:active {
+    background-color: $color-admin-private-active;
+  }
+}
+
+// https://css-tricks.com/slightly-careful-sub-elements-clickable-things/
+.mollo-button > *,
+a.mollo-button > *,
+.mollo-button-icon > *,
+.mollo-button-icon-info > *{
+  pointer-events: none;
+}
