@@ -52,7 +52,7 @@ class MolloUtilsUser
       $first_name = self::getFieldValue($user, 'field_first_name');
       $last_name = self::getFieldValue($user, 'field_last_name');
       // return $user_id;
-      return $first_name . ' ' . $last_name;
+         return $first_name . ' ' . $last_name;
     }
     return '';
 
