@@ -94,7 +94,8 @@ class MolloUtils {
           'vid' => $vid,
         ])->save();
         $tid = $new_term;
-      } catch (EntityStorageException $e) {
+      }
+      catch (EntityStorageException $e) {
       }
     }
 
@@ -244,10 +245,11 @@ class MolloUtils {
           $result = [];
         }
       }
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       throw new \RuntimeException(
         'field_name (' . $field_name . ') Error \r' . $e
-      );
+          );
     }
 
     return $result;
@@ -277,7 +279,8 @@ class MolloUtils {
       if (!is_string($field_name)) {
         throw new \RuntimeException('field_name must be a string');
       }
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       throw new \RuntimeException(
         '$field_name must be a string.' .
         ' (Field: ' .
@@ -286,7 +289,7 @@ class MolloUtils {
         $node->getType() .
         ') ' .
         $e
-      );
+          );
     }
 
     try {
@@ -295,10 +298,11 @@ class MolloUtils {
 
         $result = $value ? TRUE : FALSE;
       }
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       throw new \RuntimeException(
         'field_name (' . $field_name . ') not found \r' . $e
-      );
+          );
     }
 
     return $result;
@@ -481,10 +485,11 @@ class MolloUtils {
           return $count;
         }
       }
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       throw new \RuntimeException(
         'field_name (' . $field_name . ') Error \r' . $e
-      );
+          );
     }
     return 0;
   }
@@ -525,7 +530,8 @@ class MolloUtils {
           }
         }
       }
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       throw new \RuntimeException(
         '$field_name must be a string.' .
         ' (Field: ' .
@@ -534,7 +540,7 @@ class MolloUtils {
         $node .
         ') ' .
         $e
-      );
+          );
     }
     return $field_name;
   }
@@ -632,7 +638,6 @@ class MolloUtils {
 
     }
 
-
     return $term_list;
   }
 
@@ -641,6 +646,14 @@ class MolloUtils {
    */
   public static function getListOfTerms(string $vid): array {
     return self::getTermList($vid);
+  }
+
+  /**
+   *
+   */
+  public static function getTemplatePath($module): string {
+    return \Drupal::service('extension.list.module')->getPath($module) .
+      '/templates/';
   }
 
 }
