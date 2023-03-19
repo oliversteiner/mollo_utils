@@ -12,7 +12,8 @@ use Drupal\taxonomy\Entity\Term;
 /**
  *
  */
-class MolloUtils {
+class MolloUtils
+{
 
   /**
    * @param string $vid
@@ -21,13 +22,14 @@ class MolloUtils {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public static function getTermsByID(string $vid): array {
+  public static function getTermsByID(string $vid): array
+  {
     $term_list = [];
     $terms = \Drupal::entityTypeManager()
       ->getStorage('taxonomy_term')
       ->loadTree($vid);
     foreach ($terms as $term) {
-      $term_list[(integer) $term->tid] = (string) $term->name;
+      $term_list[(integer)$term->tid] = (string)$term->name;
     }
     return $term_list;
   }
@@ -37,7 +39,8 @@ class MolloUtils {
    *
    * @return mixed
    */
-  public static function getTermNameByID($term_id): string {
+  public static function getTermNameByID($term_id): string
+  {
     $term = Term::load($term_id);
     if (!empty($term)) {
       return $term->getName();
@@ -50,7 +53,8 @@ class MolloUtils {
    *
    * @return string
    */
-  public static function getTermIconByID($term_id): string {
+  public static function getTermIconByID($term_id): string
+  {
     $term = \Drupal::entityTypeManager()
       ->getStorage('taxonomy_term')
       ->load($term_id);
@@ -73,7 +77,8 @@ class MolloUtils {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public static function getTermIDByName($term_name, $vid, $create = TRUE): int {
+  public static function getTermIDByName($term_name, $vid, $create = TRUE): int
+  {
     $tid = 0;
 
     $terms = \Drupal::entityTypeManager()
@@ -94,8 +99,7 @@ class MolloUtils {
           'vid' => $vid,
         ])->save();
         $tid = $new_term;
-      }
-      catch (EntityStorageException $e) {
+      } catch (EntityStorageException $e) {
       }
     }
 
@@ -109,7 +113,8 @@ class MolloUtils {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public static function getTermsByName($vid): array {
+  public static function getTermsByName($vid): array
+  {
     $term_list = [];
     $terms = \Drupal::entityTypeManager()
       ->getStorage('taxonomy_term')
@@ -135,8 +140,9 @@ class MolloUtils {
     $field_name,
     $term_list_name = NULL,
     $force_array = FALSE
-  ) {
-    $result = FALSE;
+  )
+  {
+    $result = [];
     $term_list = [];
 
     if ($term_list_name && is_string($term_list_name)) {
@@ -183,8 +189,7 @@ class MolloUtils {
           if ($term_list) {
             if ($term_list && $term_list[$result]) {
               $result = $term_list[$result];
-            }
-            else {
+            } else {
               $message = "No Term found with id {$result} in Taxonomy {$term_list}";
               \Drupal::logger('mollo_utils')->notice($message);
             }
@@ -196,7 +201,7 @@ class MolloUtils {
           }
           if ($force_array === 'full') {
             $term = [];
-            $term['id'] = (int) $value[0]['target_id'];
+            $term['id'] = (int)$value[0]['target_id'];
             $term['name'] = $term_list[$value[0]['target_id']];
 
             $arr[] = $term;
@@ -219,22 +224,19 @@ class MolloUtils {
               if ($term_list_name && $term_list[$item['target_id']]) {
                 if ($force_array === 'full') {
                   $term = [];
-                  $term['id'] = (int) $item['target_id'];
+                  $term['id'] = (int)$item['target_id'];
                   $term['name'] = $term_list[$item['target_id']];
                   $result[$i] = $term;
-                }
-                else {
+                } else {
                   $result[$i] = $term_list[$item['target_id']];
                 }
-              }
-              else {
+              } else {
                 $result[$i] = FALSE;
                 $message = "No Term found with id {$result} in Taxonomy {$term_list_name}";
                 \Drupal::logger('mollo_utils')->notice($message);
               }
-            }
-            elseif (isset($item['target_id'])) {
-              $result[$i] = $item['target_id'];
+            } elseif (isset($item['target_id'])) {
+                $result[$i] = $item['target_id'];
             }
             $i++;
           }
@@ -245,11 +247,10 @@ class MolloUtils {
           $result = [];
         }
       }
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
       throw new \RuntimeException(
         'field_name (' . $field_name . ') Error \r' . $e
-          );
+      );
     }
 
     return $result;
@@ -261,7 +262,8 @@ class MolloUtils {
    *
    * @return boolean | string | array
    */
-  public static function getBoolean($node, $field_name) {
+  public static function getBoolean($node, $field_name)
+  {
     $result = FALSE;
 
     try {
@@ -279,8 +281,7 @@ class MolloUtils {
       if (!is_string($field_name)) {
         throw new \RuntimeException('field_name must be a string');
       }
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
       throw new \RuntimeException(
         '$field_name must be a string.' .
         ' (Field: ' .
@@ -289,7 +290,7 @@ class MolloUtils {
         $node->getType() .
         ') ' .
         $e
-          );
+      );
     }
 
     try {
@@ -298,11 +299,10 @@ class MolloUtils {
 
         $result = $value ? TRUE : FALSE;
       }
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
       throw new \RuntimeException(
         'field_name (' . $field_name . ') not found \r' . $e
-          );
+      );
     }
 
     return $result;
@@ -313,13 +313,13 @@ class MolloUtils {
    *
    * @return bool
    */
-  public static function getToken($node_or_node_id) {
+  public static function getToken($node_or_node_id)
+  {
     $field_name = 'field_mollo_token';
 
     if (is_numeric($node_or_node_id)) {
       $entity = Node::load($node_or_node_id);
-    }
-    else {
+    } else {
       $entity = $node_or_node_id;
     }
 
@@ -338,7 +338,8 @@ class MolloUtils {
    * @return string
    * @throws \Exception
    */
-  public static function generateToken(): string {
+  public static function generateToken(): string
+  {
     return random_bytes(20);
   }
 
@@ -348,7 +349,8 @@ class MolloUtils {
    *
    * @return boolean | string | array
    */
-  public static function getAudioFieldValue($node, $field_name) {
+  public static function getAudioFieldValue($node, $field_name)
+  {
     $result = [];
 
     $field_name = 'field_' . $field_name;
@@ -406,14 +408,14 @@ class MolloUtils {
     $img_id_or_file,
     $image_style_id,
     $dont_create = FALSE
-  ) {
+  )
+  {
     $image = [];
     $image_style = ImageStyle::load($image_style_id);
 
     if ($img_id_or_file && $img_id_or_file instanceof FileInterface) {
       $file = $img_id_or_file;
-    }
-    else {
+    } else {
       $file = File::load($img_id_or_file);
     }
 
@@ -459,7 +461,8 @@ class MolloUtils {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public static function countItems($node, $field_name) {
+  public static function countItems($node, $field_name)
+  {
     $field_name = self::validateNode($node, $field_name);
 
     try {
@@ -477,19 +480,17 @@ class MolloUtils {
           foreach ($value as $item) {
             if (isset($item['value'])) {
               $count++;
-            }
-            elseif (isset($item['target_id'])) {
+            } elseif (isset($item['target_id'])) {
               $count++;
             }
           }
           return $count;
         }
       }
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
       throw new \RuntimeException(
         'field_name (' . $field_name . ') Error \r' . $e
-          );
+      );
     }
     return 0;
   }
@@ -500,7 +501,8 @@ class MolloUtils {
    *
    * @return string
    */
-  public static function validateNode(Node $node, string $field_name): string {
+  public static function validateNode(Node $node, string $field_name): string
+  {
     $default_fields = ['body'];
 
     try {
@@ -530,8 +532,7 @@ class MolloUtils {
           }
         }
       }
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
       throw new \RuntimeException(
         '$field_name must be a string.' .
         ' (Field: ' .
@@ -540,7 +541,7 @@ class MolloUtils {
         $node .
         ') ' .
         $e
-          );
+      );
     }
     return $field_name;
   }
@@ -553,7 +554,8 @@ class MolloUtils {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public static function publishToggle($nid) {
+  public static function publishToggle($nid)
+  {
 
     $storage = \Drupal::entityTypeManager()->getStorage('node');
     $entity = $storage->load($nid);
@@ -566,8 +568,7 @@ class MolloUtils {
     if ($entity->isPublished()) {
       $entity->setUnpublished();
       $status = FALSE;
-    }
-    else {
+    } else {
       $entity->setPublished();
       $status = TRUE;
 
@@ -583,7 +584,8 @@ class MolloUtils {
    *
    * @return string
    */
-  public static function getTitleFromNodeId($nid): string {
+  public static function getTitleFromNodeId($nid): string
+  {
 
     $storage = \Drupal::entityTypeManager()->getStorage('node');
     $entity = $storage->load($nid);
@@ -609,9 +611,10 @@ class MolloUtils {
    *
    *   http://cubiq.org/the-perfect-php-clean-url-generator
    */
-  public static function toAscii($str, array $replace = [], string $delimiter = '-'): mixed {
+  public static function toAscii($str, array $replace = [], string $delimiter = '-'): mixed
+  {
     if (!empty($replace)) {
-      $str = str_replace((array) $replace, ' ', $str);
+      $str = str_replace((array)$replace, ' ', $str);
     }
     $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
     $clean = preg_replace('/[^a-zA-Z0-9_|+ -]/', '', $clean);
@@ -628,7 +631,8 @@ class MolloUtils {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public static function getTermList(string $vid): array {
+  public static function getTermList(string $vid): array
+  {
     $term_list = [];
     $terms = \Drupal::entityTypeManager()
       ->getStorage('taxonomy_term')
@@ -644,16 +648,75 @@ class MolloUtils {
   /**
    *
    */
-  public static function getListOfTerms(string $vid): array {
+  public static function getListOfTerms(string $vid): array
+  {
     return self::getTermList($vid);
   }
 
   /**
    *
    */
-  public static function getTemplatePath($module): string {
+  public static function getTemplatePath($module): string
+  {
     return \Drupal::service('extension.list.module')->getPath($module) .
       '/templates/';
+  }
+
+  public static function getTemplates(
+    $module = 'mollo',
+    $template_names = []
+  )
+  {
+    $templates = [];
+
+    // Default Names
+    $default_root_type = 'module';
+    $default_module_name = $module;
+    $module_name_url = str_replace('_', '-', $module);
+    $default_template_prefix = $module_name_url . '-';
+    $default_template_suffix = '.html.twig';
+
+    // Get Config
+    $config = \Drupal::config($module . '.settings');
+
+    // Load Path Module from Settings
+    $config_root_type = $config->get('get_path_type');
+    $config_module_name = $config->get('get_path_name');
+
+    foreach ($template_names as $template_name) {
+      // change "_" with "-"
+      $template_name_url = str_replace('_', '-', $template_name);
+
+      // Default
+      $root_type = $default_root_type;
+      $module_name = $default_module_name;
+      $template_full_name =
+        '/' .
+
+        $default_template_prefix .
+        $template_name_url .
+        $default_template_suffix;
+
+      // If Path Module is set
+      if ($config_root_type && $config_module_name) {
+        $root_type = $config_root_type;
+        $module_name = $config_module_name;
+
+        // If Template Name is set
+        $config_template_name = $config->get('template_' . $template_name);
+        if ($config_template_name) {
+          $template_full_name = $config_template_name;
+        }
+      }
+
+      $template_path =
+        self::getTemplatePath($module) . $template_full_name;
+
+      // output
+      $templates[$template_name] = $template_path;
+    }
+
+    return $templates;
   }
 
 }
