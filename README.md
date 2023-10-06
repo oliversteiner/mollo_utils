@@ -1,3 +1,8 @@
 # Mollo Utils
 Drupal Developer Utils for Mollo Modules
-v 1.0
+
+
+## History
+
+### v 1.0.1
+- refactor function: generateToken()

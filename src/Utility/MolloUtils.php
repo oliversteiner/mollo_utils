@@ -3,6 +3,7 @@
 namespace Drupal\mollo_utils\Utility;
 
 use Drupal\Core\Entity\EntityStorageException;
+use Drupal\Core\TypedData\Exception\ReadOnlyException;
 use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\image\Entity\ImageStyle;
@@ -236,7 +237,7 @@ class MolloUtils
                 \Drupal::logger('mollo_utils')->notice($message);
               }
             } elseif (isset($item['target_id'])) {
-                $result[$i] = $item['target_id'];
+              $result[$i] = $item['target_id'];
             }
             $i++;
           }
@@ -313,9 +314,11 @@ class MolloUtils
    *
    * @return bool
    */
-  public static function getToken($node_or_node_id)
+  public static function getToken($node_or_node_id): string
   {
-    $field_name = 'field_mollo_token';
+    $field_token = 'field_mollo_token';
+    $field_token_deprecated = 'field_smmg_token';
+    $token = '';
 
     if (is_numeric($node_or_node_id)) {
       $entity = Node::load($node_or_node_id);
@@ -323,15 +326,33 @@ class MolloUtils
       $entity = $node_or_node_id;
     }
 
-    if ($entity->get($field_name)) {
-      $value = $entity->get($field_name)->getValue();
+
+// Get Token from field mollo_token
+    if ($entity->get($field_token)) {
+      $value = MolloUtils::getFieldValue($entity,$field_token);
+      \Drupal::logger('Mollo Utils')->alert(serialize($value));
 
       // Value Field.
-      if ($value && $value[0] && isset($value[0]['value'])) {
-        return $value[0]['value'];
+      if ($value) {
+        $token = $value;
+
+      } else {
+        // if value is emtpy, check for smmg_token
+        $value_old = MolloUtils::getFieldValue($entity,$field_token_deprecated);
+
+        if ($value_old) {
+          $result = $value_old;
+          try {
+            $entity->get($field_token)->setValue($value_old);
+          } catch (ReadOnlyException $e) {
+            \Drupal::logger('Mollo Utils')->alert('cant set value to field_mollo_token');
+            return '';
+          }
+          $token = $result;
+        }
       }
     }
-    return FALSE;
+    return $token;
   }
 
   /**
@@ -340,7 +361,14 @@ class MolloUtils
    */
   public static function generateToken(): string
   {
-    return random_bytes(20);
+    $length = 32;
+    $stringSpace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $pieces = [];
+    $max = mb_strlen($stringSpace, '8bit') - 1;
+    for ($i = 0; $i < $length; ++$i) {
+      $pieces[] = $stringSpace[random_int(0, $max)];
+    }
+    return implode('', $pieces);
   }
 
   /**
@@ -718,6 +746,7 @@ class MolloUtils
 
     return $templates;
   }
+
   public static function getOrigin($name)
   {
     $vid = 'smmg_origin';
